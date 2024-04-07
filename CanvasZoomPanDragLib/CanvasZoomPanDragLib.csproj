@@ -53,5 +53,14 @@
   <ItemGroup>
     <Folder Include="Models\" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="nuget.exe" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CanvasZoomPanDragLib.1.0.0.nupkg" />
+    <None Include="CanvasZoomPanDragLib.nuspec" />
+    <None Include="GeneratePackage.bat" />
+    <None Include="PushPackage.bat" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
