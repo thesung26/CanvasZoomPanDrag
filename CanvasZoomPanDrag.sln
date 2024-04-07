@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34714.143
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoDotnetFramework", "DemoDotnetFramework\DemoDotnetFramework.csproj", "{3F915CF1-8FA0-431D-A90C-891009E1D53C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CanvasZoomPanDragLib", "CanvasZoomPanDragLib\CanvasZoomPanDragLib.csproj", "{C2F1052F-F0EF-48F9-B68F-1783FA3107DF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3F915CF1-8FA0-431D-A90C-891009E1D53C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F915CF1-8FA0-431D-A90C-891009E1D53C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F915CF1-8FA0-431D-A90C-891009E1D53C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F915CF1-8FA0-431D-A90C-891009E1D53C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2F1052F-F0EF-48F9-B68F-1783FA3107DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2F1052F-F0EF-48F9-B68F-1783FA3107DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2F1052F-F0EF-48F9-B68F-1783FA3107DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2F1052F-F0EF-48F9-B68F-1783FA3107DF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F5E96974-61E6-4888-AB09-512BE5CAF568}
+	EndGlobalSection
+EndGlobal
