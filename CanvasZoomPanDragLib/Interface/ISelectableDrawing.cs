@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 using System.Windows.Shapes;
 
 namespace CanvasZoomPanDragLib.Interface
@@ -14,7 +15,7 @@ namespace CanvasZoomPanDragLib.Interface
 
 		event EventHandler SelectedChanged;
 
-		void HightLightOnCanvas();
-		void UnHightLightOnCanvas();
+		void OnMouseEnter();
+		void OnMouseLeave();
 	}
 }

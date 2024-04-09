@@ -8,6 +8,6 @@ namespace CanvasZoomPanDragLib.Interface
 {
 	public interface IDraggableDrawing
 	{
-		bool CanDrag { get; set; }
+		event EventHandler Dragged;
 	}
 }

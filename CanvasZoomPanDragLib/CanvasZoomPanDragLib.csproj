@@ -51,7 +51,11 @@
     <Compile Include="Interface\ISelectableDrawing.cs" />
     <Compile Include="Models\CanvasManager.cs" />
     <Compile Include="Controls\BorderZoomPanDrag.cs" />
+    <Compile Include="Models\DraggableDrawingBase.cs" />
+    <Compile Include="Models\DrawingBase.cs" />
+    <Compile Include="Models\SelectableDrawingBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\ThreeDExt.cs" />
     <Compile Include="Utils\VisualTreeHelperExtensions.cs" />
   </ItemGroup>
   <ItemGroup />
@@ -59,7 +63,6 @@
     <Content Include="nuget.exe" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="CanvasZoomPanDragLib.1.0.0.nupkg" />
     <None Include="CanvasZoomPanDragLib.nuspec" />
     <None Include="GeneratePackage.bat" />
     <None Include="PushPackage.bat" />
