@@ -15,7 +15,7 @@ namespace CanvasZoomPanDragLib.Models
 	public class CanvasManager
 	{
 		public Canvas Canvas { get; protected set; }
-		//public ObservableCollection<IElementRevit> AllObjects { get; set; } = new();
+		public IList<IDrawing> AllDrawings { get; set; } = new List<IDrawing>();
 		public double Ratio { get; set; } = 0.9;
 		public double Scale { get; protected set; }
 		public double WidthCanvas { get; protected set; }
@@ -26,12 +26,13 @@ namespace CanvasZoomPanDragLib.Models
 		public Point3D CenterPointDecart { get; protected set; }
 
 		public event EventHandler SelectedChanged = null;
+		public event EventHandler DraggedChanged = null;
 
 		public CanvasManager(Canvas canvas, Point3D minPointDecart, Point3D maxPointDecart)
 		{
 			Canvas = canvas;
-			WidthCanvas = canvas.ActualWidth;
-			HeightCanvas = canvas.ActualHeight;
+			WidthCanvas = canvas.Width;
+			HeightCanvas = canvas.Height;
 			WidthDecart = maxPointDecart.X - minPointDecart.X;
 			HeightDecart = maxPointDecart.Y - minPointDecart.Y;
 			Scale = Math.Max(WidthCanvas, HeightCanvas) * Ratio / Math.Max(WidthDecart, HeightDecart);
@@ -50,11 +51,12 @@ namespace CanvasZoomPanDragLib.Models
 		{
 			var x = (pCanvas - CenterPointCanvas).Dot(ThreeDExt.CanvasAxisX) / Scale;
 			var y = (pCanvas - CenterPointCanvas).Dot(ThreeDExt.CanvasAxisY) / Scale;
-			return new Point3D(x + WidthDecart / 2, HeightDecart / 2 - y, 0);
+			return new Point3D(x + WidthDecart / 2, HeightDecart / 2 + y, 0);
 		}
 
-		public void Draw<T>(T drawing) where T : IDrawing
+		public void Add<T>(T drawing) where T : IDrawing
 		{
+			AllDrawings.Add(drawing);
 			drawing.ShapesOnCanvas.ForEach(shape =>
 			{
 				Canvas.Children.Add(shape);
@@ -62,9 +64,26 @@ namespace CanvasZoomPanDragLib.Models
 				{
 					shape.MouseEnter += (s, e) => { selectableDrawing.OnMouseEnter(); };
 					shape.MouseLeave += (s, e) => { selectableDrawing.OnMouseLeave(); };
-					if (drawing is IDraggableDrawing)
+					if (drawing is IDraggableDrawing draggable)
 					{
-
+						draggable.Dragged += (s, e) => { DraggedChanged?.Invoke(s, e); };
+					}
+				}
+			});
+		}
+		public void Delete<T>(T drawing) where T : IDrawing
+		{
+			AllDrawings.Remove(drawing);
+			drawing.ShapesOnCanvas.ForEach(shape =>
+			{
+				Canvas.Children.Remove(shape);
+				if (drawing is ISelectableDrawing selectableDrawing)
+				{
+					shape.MouseEnter -= (s, e) => { selectableDrawing.OnMouseEnter(); };
+					shape.MouseLeave -= (s, e) => { selectableDrawing.OnMouseLeave(); };
+					if (drawing is IDraggableDrawing draggable)
+					{
+						draggable.Dragged -= (s, e) => { DraggedChanged?.Invoke(s, e); };
 					}
 				}
 			});

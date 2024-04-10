@@ -12,14 +12,16 @@ namespace CanvasZoomPanDragLib.Models
 	{
 		public List<Shape> ShapesOnCanvas { get; set; } = new List<Shape>();
 
-		public CanvasManager Parrent { get; set; }
-		public Point3D PointDecart { get; set; }
+		public CanvasManager CanvasManager { get; set; }
+		public IList<Point3D> BasePointsDecart { get; set; }
+		public IList<Point3D> BasePointsCanvas { get; set; }
 
-		public DrawingBase(Point3D pDecart, CanvasManager canvasManager)
+		public DrawingBase(IList<Point3D> psDecart, CanvasManager canvasManager)
 		{
 			OnBeforeInit();
-			PointDecart = pDecart;
-			Parrent = canvasManager;
+			BasePointsDecart = psDecart;
+			BasePointsCanvas = psDecart.Select(x => canvasManager.TransformDecartToCanvas(x)).ToList();
+			CanvasManager = canvasManager;
 			ShapesOnCanvas = CreateShapesOnCanvas();
 		}
 		protected abstract List<Shape> CreateShapesOnCanvas();

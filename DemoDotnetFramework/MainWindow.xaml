@@ -6,27 +6,33 @@
         xmlns:local="clr-namespace:DemoDotnetFramework"
         xmlns:cvLib ="clr-namespace:CanvasZoomPanDragLib.Controls;assembly=CanvasZoomPanDragLib"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="500"
+        Title="MainWindow" Height="500" Width="500"
         WindowStartupLocation="CenterScreen"
         >
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition Height="400"/>
-            <RowDefinition/>
+            <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
         <cvLib:BorderZoomPanDrag Grid.Row="1" BorderThickness="1" BorderBrush="Black" ClipToBounds="True">
-            <Canvas Background="Gray"
-                    Width="400"
-                    Height="400"
+            <Canvas Background="White"
+                    Width="350"
+                    Height="350"
                     x:Name="cv"
                     >
-                <Ellipse Fill="DarkOrange"
+                <!--<Ellipse Fill="DarkOrange"
                          x:Name="el"
                          Height="40" Width="40"
                          Canvas.Top="0" Canvas.Left="0"
-                         />
+                         />-->
             </Canvas>
         </cvLib:BorderZoomPanDrag>
+        <Button
+            Grid.Row="2"
+            Click="Button_Click"
+            >
+            Check transform canvas to decart
+        </Button>
     </Grid>
 </Window>

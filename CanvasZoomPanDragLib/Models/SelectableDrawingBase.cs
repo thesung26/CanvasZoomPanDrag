@@ -11,7 +11,7 @@ namespace CanvasZoomPanDragLib.Models
 {
 	public abstract class SelectableDrawingBase : DrawingBase, ISelectableDrawing
 	{
-		protected SelectableDrawingBase(Point3D pDecart, CanvasManager canvasManager) : base(pDecart, canvasManager)
+		protected SelectableDrawingBase(IList<Point3D> psDecart, CanvasManager canvasManager) : base(psDecart, canvasManager)
 		{
 			ShapesOnCanvas.ForEach(p =>
 			{

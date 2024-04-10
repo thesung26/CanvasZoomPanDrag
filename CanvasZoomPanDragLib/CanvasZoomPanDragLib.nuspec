@@ -10,7 +10,13 @@
     <!-- <icon>icon.png</icon> -->
     <projectUrl>https://github.com/thesung26/CanvasZoomPanDrag</projectUrl>
     <description>$description$</description>
-    <releaseNotes>Release for testing</releaseNotes>
+    <releaseNotes>
+    - Additional:
+     + Canvas Manager
+     + Drawing
+     + Seclectable Drawing
+     + Draggable Drawing
+    </releaseNotes>
     <copyright>$copyright$</copyright>
     <tags>wpf canvas zoom pan drag</tags>
   </metadata>
