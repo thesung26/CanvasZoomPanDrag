@@ -1,3 +1,5 @@
+![image](https://github.com/thesung26/CanvasZoomPanDrag/assets/70112212/4699a082-1f72-4cac-b799-41954a96104f)
+
 **In Xaml:**
         <cvLib:BorderZoomPanDrag Grid.Row="1" BorderThickness="1" BorderBrush="Black" ClipToBounds="True">
             <Canvas Background="White"
@@ -8,13 +10,15 @@
             </Canvas>
         </cvLib:BorderZoomPanDrag>
 
-**In codebehind:**
+**In Code-behind:**
   - Init canvas manager:
+    
     CanvasManager canvasManager = new CanvasManager(cv, new Point3D(), new Point3D(10000, 10000, 0));
   - Init drawing (Drawing/SelectableDrawing/DraggableDrawing):
+    
     Selectable sel = new Selectable(new List<Point3D> { new Point3D(0, 0, 0) }, canvasManager);
 
-    _class Selectable : SelectableDrawingBase
+    class Selectable : SelectableDrawingBase
     {
     	public Selectable(IList<Point3D> pDecart, CanvasManager canvasManager) : base(pDecart, canvasManager)
     	{
@@ -33,6 +37,9 @@
     		shapes.Add(el);
     		return shapes;
     	}
-    }_
+    }
   - Draw:
+    
     canvasManager.Add(sel);
+
+**Demo:** https://github.com/thesung26/CanvasZoomPanDrag/tree/main/DemoDotnetFramework
