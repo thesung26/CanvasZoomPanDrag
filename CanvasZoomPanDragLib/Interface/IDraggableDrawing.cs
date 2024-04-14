@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace CanvasZoomPanDragLib.Interface
 {
-	public interface IDraggableDrawing
-	{
-		event EventHandler Dragged;
-	}
+    public interface IDraggableDrawing
+    {
+        event EventHandler Dragged;
+        event EventHandler Dragging;
+    }
 }

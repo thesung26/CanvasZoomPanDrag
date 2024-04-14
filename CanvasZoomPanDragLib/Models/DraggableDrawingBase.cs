@@ -65,7 +65,8 @@ namespace CanvasZoomPanDragLib.Models
 						firstMousePosition = currentPosition;
 						isTranTFChanged = true;
 					});
-				}
+                    Dragging?.Invoke(this, EventArgs.Empty);
+                }
 			}
 		}
 		private void P_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -77,6 +78,7 @@ namespace CanvasZoomPanDragLib.Models
 		}
 
 		public event EventHandler Dragged;
+		public event EventHandler Dragging;
 		public override void OnMouseEnter()
 		{
 			base.OnMouseEnter();

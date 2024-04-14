@@ -12,10 +12,9 @@
     <description>$description$</description>
     <releaseNotes>
     - Additional:
-     + Canvas Manager
-     + Drawing
-     + Seclectable Drawing
-     + Draggable Drawing
+     + Add event dragging
+    - Fix:
+     + Fix tranform Canvas to Descarte
     </releaseNotes>
     <copyright>$copyright$</copyright>
     <tags>wpf canvas zoom pan drag</tags>

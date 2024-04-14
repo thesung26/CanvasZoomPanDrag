@@ -48,7 +48,7 @@ namespace CanvasZoomPanDragLib.Controls
                 {
                     canvas.Loaded += (s, e) =>
                     {
-                        this.Background = canvas.Background;
+                        //this.Background = canvas.Background;
                     };
                 }
 
