@@ -15,8 +15,8 @@
             <RowDefinition Height="150"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
-        <cvLib:BorderZoomPanDrag Grid.Row="0" Background="LightGray" BorderThickness="1" BorderBrush="Black" ClipToBounds="True">
-            <Canvas Background="Gray"
+        <cvLib:BorderZoomPanDrag Grid.Row="0" Background="White" BorderThickness="1" BorderBrush="Black" ClipToBounds="True">
+            <Canvas Background="White"
                     Width="350"
                     Height="350"
                     x:Name="cv"

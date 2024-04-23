@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Media.Media3D;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace DemoDotnetFramework
 {
@@ -30,12 +31,14 @@ namespace DemoDotnetFramework
         public MainWindow()
         {
             InitializeComponent();
-            canvasManager = new CanvasManager(cv, new Point3D(0, 0, 0), new Point3D(10000, -10000, 0));
+            canvasManager = new CanvasManager(cv, new Point3D(0, 0, 0), new Point3D(10000, 10000, 0));
             sel = new Selectable(new List<Point3D> { new Point3D(0, 0, 0) }, canvasManager);
-            drag = new Draggable(new List<Point3D> { new Point3D(0, 0, 0), new Point3D(5000, 0, 0), new Point3D(5000, 5000, 0)}, canvasManager);
+            drag = new Draggable(new List<Point3D> { new Point3D(0, 0, 0), new Point3D(5000, 0, 0), new Point3D(5000, 5000, 0) }, canvasManager);
+            var txt = new Txt(new List<Point3D> { new Point3D(0, 4000, 0) }, canvasManager);
             drag.Dragging += Drag_Dragging;
             canvasManager.Add(sel);
             canvasManager.Add(drag);
+            canvasManager.Add(txt);
 
             lbBase.Items.Add(drag.BasePointsDecart[0]);
             lbBase.Items.Add(drag.BasePointsDecart[1]);
@@ -55,6 +58,44 @@ namespace DemoDotnetFramework
             lbDragging.Items.Add(ps[2]);
         }
     }
+
+    class Txt : DrawingBase
+    {
+        public Txt(IList<Point3D> psDecart, CanvasManager canvasManager) : base(psDecart, canvasManager)
+        {
+        }
+
+        protected override List<Shape> CreateShapesOnCanvas()
+        {
+            var p = BasePointsCanvas[0];
+            Label textBox = new Label();
+            textBox.Content = "セットバック11";
+            textBox.VerticalContentAlignment = VerticalAlignment.Center;
+            textBox.HorizontalContentAlignment = HorizontalAlignment.Center;
+            textBox.BorderBrush = Brushes.Brown;
+            textBox.BorderThickness = new Thickness(2);
+            textBox.Width = 100;
+            textBox.Height = 50;
+            var x = p.X - textBox.Width / 2;
+            var y = p.Y - textBox.Height / 2;
+            Canvas.SetLeft(textBox, x);
+            Canvas.SetTop(textBox, y);
+            textBox.RenderTransformOrigin = new Point(0.5, 0.5);
+            textBox.RenderTransform = new RotateTransform(45, 0.5, 0.5);
+            CanvasManager.Canvas.Children.Add(textBox);
+
+            var shapes = new List<Shape>();
+            var el = new Ellipse();
+            Canvas.SetLeft(el, p.X - 5);
+            Canvas.SetTop(el, p.Y - 5);
+            el.Height = 10;
+            el.Width = 10;
+            el.Fill = Brushes.Black;
+            shapes.Add(el);
+            return shapes;
+        }
+    }
+
     class Selectable : SelectableDrawingBase
     {
         public Selectable(IList<Point3D> pDecart, CanvasManager canvasManager) : base(pDecart, canvasManager)
