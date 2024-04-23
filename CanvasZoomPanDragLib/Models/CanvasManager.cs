@@ -35,7 +35,7 @@ namespace CanvasZoomPanDragLib.Models
             HeightCanvas = canvas.Height;
             WidthDecart = Math.Abs(maxPointDecart.X - minPointDecart.X);
             HeightDecart = Math.Abs(maxPointDecart.Y - minPointDecart.Y);
-            Scale = Math.Max(WidthCanvas, HeightCanvas) * Ratio / Math.Max(WidthDecart, HeightDecart);
+            Scale = Math.Min(WidthCanvas, HeightCanvas) * Ratio / Math.Max(WidthDecart, HeightDecart);
             CenterPointDecart = minPointDecart.MidPointWith(maxPointDecart);
             var pMinCanvas = new Point3D();
             var pMaxCanvas = new Point3D(WidthCanvas, HeightCanvas, 0);
